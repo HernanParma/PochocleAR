@@ -1,0 +1,24 @@
+.footer {
+  border-top: 1px solid var(--color-border);
+  background: #0c0e12;
+  margin-top: auto;
+}
+
+.footer__inner {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  padding-block: var(--space-5);
+  color: var(--color-text-muted);
+  font-size: 0.925rem;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.footer__brand {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.footer__brand span {
+  color: var(--color-accent);
+}
