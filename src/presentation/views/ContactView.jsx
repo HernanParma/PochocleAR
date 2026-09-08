@@ -1,6 +1,20 @@
 import { useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import { validateContactForm } from '../../application/contact/validateContactForm.js';
 import styles from './ContactView.module.css';
+
+import L from 'leaflet';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 const EMPTY_FORM = {
   name: '',
@@ -8,10 +22,8 @@ const EMPTY_FORM = {
   message: '',
 };
 
-/** Coordenadas de la Catedral de La Plata (requisito RF7). */
 const MAP_LAT = -34.9215;
 const MAP_LNG = -57.9536;
-const MAP_SRC = `https://www.openstreetmap.org/export/embed.html?bbox=${MAP_LNG - 0.01}%2C${MAP_LAT - 0.008}%2C${MAP_LNG + 0.01}%2C${MAP_LAT + 0.008}&layer=mapnik&marker=${MAP_LAT}%2C${MAP_LNG}`;
 
 export function ContactView() {
   const [form, setForm] = useState(EMPTY_FORM);
@@ -37,21 +49,20 @@ export function ContactView() {
     setErrors({});
     setForm(EMPTY_FORM);
     setSuccess(
-      'Mensaje validado correctamente. Gracias por contactar a PochocleAR Studio.',
+      '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.',
     );
   }
 
   return (
     <div className={styles.page}>
-      <section aria-labelledby="contact-title">
+      <div className={styles.intro}>
         <h1 id="contact-title" className={styles.title}>
           Contacto
         </h1>
         <p className={styles.lead}>
-          Escribinos o visitá nuestro estudio en La Plata. El mapa está centrado
-          en la Catedral de La Plata.
+          Escribinos tus consultas o visitanos en nuestro estudio.
         </p>
-      </section>
+      </div>
 
       <div className={styles.grid}>
         <section className={styles.panel} aria-labelledby="studio-title">
@@ -60,12 +71,7 @@ export function ContactView() {
           </h2>
           <ul className={styles.infoList}>
             <li>
-              <strong>Dirección:</strong> Calle 14 entre 47 y 48, La Plata,
-              Buenos Aires, Argentina
-            </li>
-            <li>
-              <strong>Referencia:</strong> Catedral de La Plata (
-              {MAP_LAT}, {MAP_LNG})
+              <strong>Dirección:</strong> Calle 14 entre 47 y 48, La Plata, Buenos Aires
             </li>
             <li>
               <strong>Email:</strong> hola@pochoclear.studio
@@ -74,32 +80,33 @@ export function ContactView() {
               <strong>Teléfono:</strong> +54 221 555-0134
             </li>
             <li>
-              <strong>Horario:</strong> Lun a Vie, 9:00–18:00
+              <strong>Horario:</strong> Lunes a viernes, 9:00 a 18:00 hs
             </li>
           </ul>
 
-          <div className={styles.mapWrap}>
-            <iframe
-              title="Mapa de la Catedral de La Plata"
-              src={MAP_SRC}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-          <p className={styles.lead}>
-            <a
-              href={`https://www.openstreetmap.org/?mlat=${MAP_LAT}&mlon=${MAP_LNG}#map=16/${MAP_LAT}/${MAP_LNG}`}
-              target="_blank"
-              rel="noreferrer"
+          <div className={styles.mapContainerWrap}>
+            <MapContainer
+              center={[MAP_LAT, MAP_LNG]}
+              zoom={15}
+              scrollWheelZoom={false}
+              style={{ height: '100%', width: '100%' }}
             >
-              Abrir mapa ampliado
-            </a>
-          </p>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={[MAP_LAT, MAP_LNG]}>
+                <Popup>
+                  PochocleAR Studio <br /> Catedral de La Plata
+                </Popup>
+              </Marker>
+            </MapContainer>
+          </div>
         </section>
 
         <section className={styles.panel} aria-labelledby="form-title">
           <h2 id="form-title" className={styles.panelTitle}>
-            Enviar mensaje
+            Envianos un mensaje
           </h2>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             <div className={styles.field}>
@@ -110,6 +117,7 @@ export function ContactView() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
+                placeholder="Tu nombre"
                 autoComplete="name"
               />
               {errors.name && <p className={styles.error}>{errors.name}</p>}
@@ -123,6 +131,7 @@ export function ContactView() {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
+                placeholder="tu@correo.com"
                 autoComplete="email"
               />
               {errors.email && <p className={styles.error}>{errors.email}</p>}
@@ -136,12 +145,13 @@ export function ContactView() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
+                placeholder="¿En qué podemos ayudarte?"
               />
               {errors.message && <p className={styles.error}>{errors.message}</p>}
             </div>
 
             <button type="submit" className={styles.button}>
-              Enviar
+              Enviar mensaje
             </button>
 
             {success && <p className={styles.success}>{success}</p>}

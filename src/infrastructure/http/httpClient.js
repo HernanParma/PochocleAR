@@ -1,6 +1,4 @@
 /**
- * Cliente HTTP basado en Fetch API con manejo explícito de errores
- * de red y códigos de estado HTTP (requisito de cátedra).
  */
 
 export class HttpError extends Error {

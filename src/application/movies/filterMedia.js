@@ -1,7 +1,7 @@
 import { tmdbApi } from '../../infrastructure/tmdb/tmdbApi.js';
 
 /**
- * Caso de uso: filtrado avanzado (tipo + plataforma AR + género).
+ * filtrado tipo + plataforma + género
  * @param {{
  *   mediaType: 'movie'|'tv',
  *   providerId?: number|string,

@@ -1,7 +1,6 @@
 import { tmdbApi } from '../../infrastructure/tmdb/tmdbApi.js';
 
 /**
- * Mezcla un arreglo sin mutar el original (Fisher–Yates).
  * @template T
  * @param {T[]} items
  * @returns {T[]}
@@ -16,8 +15,7 @@ function shuffle(items) {
 }
 
 /**
- * Caso de uso: contenido destacado / aleatorio para Home.
- * Combina populares de películas y series, mezcla y limita resultados.
+ * contenido destacado para Home.
  * @param {{ limit?: number, page?: number }} [options]
  */
 export async function getFeaturedContent(options = {}) {

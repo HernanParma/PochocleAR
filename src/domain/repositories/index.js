@@ -1,6 +1,5 @@
 /**
- * Contratos / puertos del dominio.
- * En JS se documentan como interfaces; las implementaciones viven en infrastructure.
+ * Contratos 
  */
 
 /**

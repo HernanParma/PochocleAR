@@ -7,6 +7,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  margin-top: var(--space-2);
 }
 
 .button,
@@ -154,21 +155,48 @@
   color: var(--color-text-muted);
 }
 
-/* —— Formulario lista de deseos —— */
+/* =========================
+   MODAL / POPUP DE LISTA DE DESEOS
+========================= */
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(10, 12, 16, 0.8);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+}
 
 .wishlistPanel {
+  width: 100%;
+  max-width: 32rem;
   display: grid;
   gap: var(--space-4);
-  padding: var(--space-4);
+  padding: var(--space-5);
   border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
-  border-radius: calc(var(--radius) + 0.15rem);
+  border-radius: calc(var(--radius) + 0.2rem);
   background:
     linear-gradient(
       160deg,
-      color-mix(in srgb, var(--color-accent) 10%, var(--color-surface)) 0%,
-      var(--color-surface) 42%
+      color-mix(in srgb, var(--color-accent) 12%, var(--color-surface)) 0%,
+      var(--color-surface) 50%
     );
-  box-shadow: var(--shadow);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.6);
+  animation: modalScaleIn 0.2s ease-out;
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .wishlistPanel__header {
@@ -212,13 +240,6 @@
   border-color: var(--color-accent);
 }
 
-.wishlistPanel__lead {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  max-width: 36rem;
-}
-
 .wishlistForm {
   display: grid;
   gap: var(--space-4);
@@ -253,7 +274,7 @@
 }
 
 .textarea {
-  min-height: 6.5rem;
+  min-height: 5.5rem;
   resize: vertical;
 }
 
@@ -275,12 +296,6 @@
 
 .input--error:focus {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-danger) 28%, transparent);
-}
-
-.hint {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 0.8rem;
 }
 
 .error {
@@ -385,9 +400,5 @@
   .poster {
     margin-inline: 0;
     width: 100%;
-  }
-
-  .wishlistPanel {
-    padding: var(--space-5);
   }
 }

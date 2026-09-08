@@ -1,5 +1,4 @@
 /**
- * Registro del Historial de Visitas.
  * @typedef {Object} HistoryItem
  * @property {string} id - Identificador compuesto `${mediaType}-${tmdbId}`
  * @property {number} tmdbId

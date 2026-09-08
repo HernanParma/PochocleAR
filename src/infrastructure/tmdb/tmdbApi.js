@@ -5,7 +5,7 @@ import { assertTmdbConfigured, tmdbConfig } from '../config/tmdbConfig.js';
 import { httpGet } from '../http/httpClient.js';
 
 /**
- * Construye una URL de TMDB con api_key, language y query params.
+ * Construye URL 
  * @param {string} path - Ruta relativa al baseUrl (ej. /search/movie)
  * @param {Record<string, string|number|boolean|undefined|null>} [params]
  * @returns {string}
@@ -26,7 +26,7 @@ function buildTmdbUrl(path, params = {}) {
 }
 
 /**
- * Normaliza la respuesta paginada de TMDB a un máximo de resultsPerPage ítems.
+ * Normaliza la respuesta 
  * @param {Object} data
  * @param {'movie'|'tv'} mediaType
  */
@@ -42,8 +42,7 @@ function mapPagedResults(data, mediaType) {
 }
 
 /**
- * Adaptador de infraestructura: cliente TMDB vía Fetch API.
- * Implementa el puerto MovieRepository del dominio.
+ * cliente TMDB vía Fetch API.
  */
 export const tmdbApi = {
   /**
@@ -151,7 +150,7 @@ export const tmdbApi = {
   },
 
   /**
-   * Contenido destacado / popular para Home.
+   * Contenido destacado para Home.
    * @param {'movie'|'tv'} [mediaType='movie']
    * @param {number} [page=1]
    */
@@ -163,7 +162,7 @@ export const tmdbApi = {
   },
 
   /**
-   * Listado de proveedores de watch disponibles en Argentina (para filtros).
+   * Listado de proveedores disponibles en Argentina .
    */
   async getWatchProviderCatalog(mediaType = 'movie') {
     const path =

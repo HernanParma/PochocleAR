@@ -24,13 +24,14 @@ export function HistoryView() {
 
   return (
     <section className={styles.page} aria-labelledby="history-title">
-      <h1 id="history-title" className={styles.title}>
-        Historial de visitas
-      </h1>
-      <p className={styles.lead}>
-        Títulos que visitaste, del más reciente al más antiguo. Tocá uno para
-        volver a su detalle.
-      </p>
+      <div className={styles.intro}>
+        <h1 id="history-title" className={styles.title}>
+          Historial de visitas
+        </h1>
+        <p className={styles.lead}>
+          Las últimas películas y series que estuviste viendo.
+        </p>
+      </div>
 
       {items.length === 0 ? (
         <p className={styles.empty}>

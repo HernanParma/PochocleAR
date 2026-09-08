@@ -135,8 +135,7 @@ export function SearchView() {
           Búsqueda
         </h1>
         <p className={styles.lead}>
-          Live search por título y filtrado avanzado simultáneo: tipo de
-          contenido, plataforma de streaming en Argentina y género.
+          Encontrá rápido lo que querés ver buscando por título o usando los filtros.
         </p>
       </section>
 
@@ -146,7 +145,7 @@ export function SearchView() {
         </h2>
 
         <div className={styles.liveSearch}>
-          <label htmlFor="search-query">Live search</label>
+          <label htmlFor="search-query">Título</label>
           <div className={styles.liveSearch__row}>
             <input
               id="search-query"
@@ -224,8 +223,7 @@ export function SearchView() {
 
         {mode === 'search' && params.provider && !providerApplied && (
           <p className={styles.hint}>
-            Con texto de búsqueda activo, el filtro de plataforma se aplica al
-            limpiar el título (modo descubrimiento por plataforma).
+            Con un texto de búsqueda activo, la plataforma se aplica al limpiar el título.
           </p>
         )}
       </section>
@@ -268,7 +266,7 @@ export function SearchView() {
 
         {status === 'idle' && (
           <p className={styles.status}>
-            Usá el live search o los filtros para explorar el catálogo.
+            Buscá un título o elegí una categoría para empezar a explorar.
           </p>
         )}
       </section>

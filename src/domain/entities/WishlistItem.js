@@ -1,5 +1,4 @@
 /**
- * Ítem de la Lista de Deseos (Variante B: formulario de preferencias).
  * @typedef {Object} WishlistItem
  * @property {string} id - Identificador compuesto `${mediaType}-${tmdbId}`
  * @property {number} tmdbId

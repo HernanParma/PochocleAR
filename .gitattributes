@@ -1,15 +1,14 @@
-# Normaliza automáticamente los archivos de texto y los convierte a LF en los commits
+# Normaliza los archivos de texto 
 * text=auto
 
-# Archivos de código fuente
-*.cs     text eol=lf
-*.csproj text eol=lf
-*.sln    text eol=lf
-*.config text eol=lf
+# Archivos de código fuente y configuración web
+*.js     text eol=lf
+*.jsx    text eol=lf
+*.ts     text eol=lf
+*.tsx    text eol=lf
 *.json   text eol=lf
-*.xml    text eol=lf
-*.xaml   text eol=lf
-*.resx   text eol=lf
+*.css    text eol=lf
+*.html   text eol=lf
 
 # Archivos de scripts
 *.sh     text eol=lf
@@ -21,11 +20,12 @@
 *.md     text eol=lf
 *.txt    text eol=lf
 
-# Archivos de Git
+# Archivos de configuración de Git y entorno
+.env     text eol=lf
 .gitignore text eol=lf
 .gitattributes text eol=lf
 
-# Evitar tratamiento de archivos binarios
+# Evita tratamiento de archivos binarios
 *.png    binary
 *.jpg    binary
 *.jpeg   binary
@@ -33,10 +33,3 @@
 *.ico    binary
 *.pdf    binary
 *.zip    binary
-*.exe    binary
-*.dll    binary
-*.pdb    binary
-
-# Visual Studio user-specific files (pueden ir en .gitignore pero si se versionan, evitar conflictos)
-*.user   text eol=lf
-*.suo    binary

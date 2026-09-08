@@ -1,7 +1,7 @@
 import { tmdbApi } from '../../infrastructure/tmdb/tmdbApi.js';
 
 /**
- * Caso de uso: búsqueda por texto (live search).
+ * búsqueda por texto.
  * @param {{ query: string, mediaType?: 'movie'|'tv', page?: number }} input
  */
 export async function searchMedia(input) {

@@ -1,7 +1,7 @@
 import { tmdbApi } from '../../infrastructure/tmdb/tmdbApi.js';
 
 /**
- * Caso de uso: detalle completo + proveedores AR.
+ * detalle completo + proveedores
  * @param {number} id
  * @param {'movie'|'tv'} mediaType
  */

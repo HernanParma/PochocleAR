@@ -3,38 +3,35 @@ import { buildImageUrl } from '../../infrastructure/config/tmdbConfig.js';
 import { useWishlist } from '../context/WishlistContext.jsx';
 import styles from './WishlistView.module.css';
 
-function formatDate(iso) {
-  try {
-    return new Intl.DateTimeFormat('es-AR', {
-      dateStyle: 'short',
-      timeStyle: 'short',
-    }).format(new Date(iso));
-  } catch {
-    return iso;
-  }
-}
-
 export function WishlistView() {
   const { items, removeItem } = useWishlist();
 
+  const sortedItems = [...items].sort((a, b) => Number(b.priority || 0) - Number(a.priority || 0));
+
   return (
     <section className={styles.page} aria-labelledby="wishlist-title">
-      <h1 id="wishlist-title" className={styles.title}>
-        Lista de deseos
-      </h1>
-      <p className={styles.lead}>
-        Tus pendientes guardados en este dispositivo (localStorage), con
-        prioridad, etiqueta y nota personal.
-      </p>
+      <div className={styles.intro}>
+        <h1 id="wishlist-title" className={styles.title}>
+          Lista de deseos
+        </h1>
+        <p className={styles.lead}>
+          Tus películas y series pendientes para ver más adelante.
+        </p>
+        {items.length > 0 && (
+          <span className={styles.counter}>
+            {items.length} {items.length === 1 ? 'título guardado' : 'títulos guardados'}
+          </span>
+        )}
+      </div>
 
       {items.length === 0 ? (
         <p className={styles.empty}>
-          Todavía no agregaste nada. Explorá el{' '}
+          Todavía no guardaste nada. Explorá el{' '}
           <Link to="/buscar">buscador</Link> y sumá títulos desde el detalle.
         </p>
       ) : (
         <ul className={styles.list}>
-          {items.map((item) => {
+          {sortedItems.map((item) => {
             const poster = buildImageUrl(item.posterPath, 'w185');
             return (
               <li key={item.id} className={styles.item}>
@@ -52,11 +49,11 @@ export function WishlistView() {
                   <div className={styles.itemBody}>
                     <h2 className={styles.itemTitle}>{item.title}</h2>
                     <p className={styles.meta}>
-                      {item.mediaType === 'tv' ? 'Serie' : 'Película'} ·
-                      Prioridad {item.priority} · {item.category}
+                      {item.mediaType === 'tv' ? 'Serie' : 'Película'}
+                      {item.priority ? ` · Prioridad ${item.priority}` : ''}
+                      {item.category ? ` · ${item.category}` : ''}
                     </p>
                     {item.note ? <p className={styles.note}>{item.note}</p> : null}
-                    <p className={styles.meta}>Guardado: {formatDate(item.createdAt)}</p>
                   </div>
                 </Link>
                 <button

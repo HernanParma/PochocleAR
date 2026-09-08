@@ -2,7 +2,6 @@ import { createWishlistItem } from '../../domain/entities/WishlistItem.js';
 import { wishlistStorage } from '../../infrastructure/storage/wishlistStorage.js';
 
 /**
- * Validación estricta en JavaScript (sin depender de atributos HTML).
  * @param {Object} formData
  * @returns {{ valid: boolean, errors: Record<string, string> }}
  */

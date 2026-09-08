@@ -1,6 +1,4 @@
 /**
- * Configuración de entorno para TMDB.
- * Las claves sensibles viven en variables VITE_* (archivo .env, no versionado).
  */
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 const baseUrl = import.meta.env.VITE_TMDB_BASE_URL || 'https://api.themoviedb.org/3';

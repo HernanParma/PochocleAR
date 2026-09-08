@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getFeaturedContent } from '../../application/movies/getFeaturedContent.js';
 import { MediaGrid } from '../components/MediaGrid/MediaGrid.jsx';
 import styles from './HomeView.module.css';
@@ -59,9 +59,7 @@ export function HomeView() {
           Pochocle<span>AR</span>
         </h1>
         <p className={styles.hero__tagline}>
-          Explorá películas y series disponibles en las plataformas de streaming
-          de Argentina. Encontrá qué ver hoy, filtrá por servicio y guardá tus
-          pendientes.
+          Encontrá películas y series en streaming disponibles en Argentina.
         </p>
 
         <form className={styles.search} onSubmit={handleSearchSubmit} role="search">
@@ -83,22 +81,14 @@ export function HomeView() {
               Buscar
             </button>
           </div>
-          <p className={styles.search__hint}>
-            Acceso directo al buscador. También podés ir a{' '}
-            <Link to="/buscar">Búsqueda</Link>.
-          </p>
         </form>
       </section>
 
       <section className={styles.featured} aria-labelledby="featured-title">
         <header className={styles.featured__header}>
           <h2 id="featured-title" className={styles.featured__title}>
-            Destacados para vos
+            Tendencias de hoy
           </h2>
-          <p className={styles.featured__lead}>
-            Selección dinámica de títulos populares. Tocá una tarjeta para ver
-            el detalle y dónde mirarla en Argentina.
-          </p>
         </header>
 
         {status === 'loading' && (

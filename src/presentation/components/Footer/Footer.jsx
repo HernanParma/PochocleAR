@@ -9,10 +9,12 @@ export function Footer() {
         <p className={styles.footer__brand}>
           Pochocle<span>AR</span>
         </p>
-        <p>
-          Explorá películas y series en streaming disponibles en Argentina.
+        <p className={styles.footer__text}>
+          Descubrí dónde ver tus películas y series favoritas.
         </p>
-        <p>© {year} · Trabajo Integrador · Aplicaciones Móviles</p>
+        <p className={styles.footer__copy}>
+          © {year} PochocleAR
+        </p>
       </div>
     </footer>
   );

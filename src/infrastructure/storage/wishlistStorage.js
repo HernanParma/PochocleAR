@@ -4,7 +4,6 @@ import { createLocalStorageStore } from './localStorageStore.js';
 const store = createLocalStorageStore('pochoclear:wishlist');
 
 /**
- * Adaptador de persistencia para la Lista de Deseos.
  */
 export const wishlistStorage = {
   getAll() {

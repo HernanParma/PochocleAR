@@ -3,9 +3,8 @@ import { searchMedia } from './searchMedia.js';
 import { filterMedia } from './filterMedia.js';
 
 /**
- * Caso de uso unificado para la vista Búsqueda.
  * - Con texto: live search + filtro de género en cliente.
- * - Sin texto: discover con tipo, plataforma AR y género.
+ * - Sin texto: discover con tipo, plataforma y género.
  *
  * @param {{
  *   query?: string,
@@ -32,7 +31,6 @@ export async function queryCatalog(input = {}) {
       ...data,
       results,
       mode: 'search',
-      /** El filtro de plataforma aplica en modo discover (sin texto). */
       providerApplied: false,
     };
   }

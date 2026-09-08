@@ -1,5 +1,4 @@
 /**
- * Adaptador genérico sobre localStorage con serialización JSON segura.
  */
 export function createLocalStorageStore(storageKey) {
   function read() {

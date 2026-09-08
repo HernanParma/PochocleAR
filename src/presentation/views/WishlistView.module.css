@@ -1,6 +1,11 @@
 .page {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-6);
+}
+
+.intro {
+  display: grid;
+  gap: var(--space-2);
 }
 
 .title {
@@ -12,6 +17,13 @@
   margin: 0;
   color: var(--color-text-muted);
   max-width: 40rem;
+}
+
+.counter {
+  margin-top: var(--space-1);
+  font-size: 0.9rem;
+  color: var(--color-accent-soft);
+  font-weight: 600;
 }
 
 .list {
@@ -92,7 +104,7 @@
 }
 
 .remove {
-  justify-self: start;
+  justify-self: end; 
   min-height: 2.25rem;
   padding: 0.4rem 0.85rem;
   border-radius: var(--radius);

@@ -1,5 +1,4 @@
 /**
- * Validación estricta en JavaScript del formulario de Contacto.
  * @param {Object} formData
  * @returns {{ valid: boolean, errors: Record<string, string> }}
  */

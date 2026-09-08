@@ -5,8 +5,7 @@ const store = createLocalStorageStore('pochoclear:history');
 const MAX_ITEMS = 50;
 
 /**
- * Adaptador de persistencia para el Historial de Visitas.
- * Orden cronológico inverso (más reciente primero).
+ * Orden cronológico inverso 
  */
 export const historyStorage = {
   getAll() {

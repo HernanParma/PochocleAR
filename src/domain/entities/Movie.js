@@ -1,5 +1,4 @@
 /**
- * Tipos de contenido soportados por PochocleAR / TMDB.
  * @typedef {'movie' | 'tv'} MediaType
  */
 
